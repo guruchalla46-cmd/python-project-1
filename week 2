@@ -1,0 +1,52 @@
+from datetime import datetime
+
+records = []
+
+while True:
+    print("\n--- AQRS MENU ---")
+    print("1. Add Pollutant Record")
+    print("2. View Records")
+    print("3. Exit")
+
+    choice = input("Enter choice: ")
+
+    # Option 1: Add Record
+    if choice == "1":
+        try:
+            pm25 = float(input("Enter PM2.5: "))
+            pm10 = float(input("Enter PM10: "))
+
+            if pm25 <= 0 or pm10 <= 0:
+                print("Values must be greater than 0")
+                continue
+
+            time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            record = {
+                "time": time,
+                "pm25": pm25,
+                "pm10": pm10
+            }
+
+            records.append(record)
+            print("Record added successfully!")
+
+        except:
+            print("Invalid input!")
+
+    # Option 2: View Records
+    elif choice == "2":
+        if not records:
+            print("No records available")
+        else:
+            print("\n--- All Records ---")
+            for i, r in enumerate(records, start=1):
+                print(i, r)
+
+    # Option 3: Exit
+    elif choice == "3":
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice!")
