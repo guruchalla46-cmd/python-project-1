@@ -1,0 +1,20 @@
+data = [100, 120, 80, 90]
+
+# Analysis (without numpy)
+avg = sum(data) / len(data)
+print("Average:", avg)
+print("Max:", max(data))
+print("Min:", min(data))
+
+# Graph
+try:
+    import matplotlib.pyplot as plt
+
+    plt.plot(data)
+    plt.title("PM2.5 Trend")
+    plt.xlabel("Records")
+    plt.ylabel("PM2.5")
+    plt.show()
+
+except:
+    print("Matplotlib not installed")
