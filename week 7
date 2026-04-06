@@ -1,0 +1,24 @@
+class Record:
+    def __init__(self, time):
+        self._time = time   # private (encapsulation)
+
+    def get_time(self):
+        return self._time
+
+
+class PollutantRecord(Record):
+
+    def __init__(self, time, pm25, pm10):
+        super().__init__(time)
+        self.pm25 = pm25
+        self.pm10 = pm10
+
+    def display(self):
+        print("Time:", self.get_time())
+        print("PM2.5:", self.pm25)
+        print("PM10:", self.pm10)
+
+
+# Test
+obj = PollutantRecord("12:00", 150, 90)
+obj.display()
