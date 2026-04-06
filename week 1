@@ -1,0 +1,17 @@
+try:
+    pm25 = float(input("Enter PM2.5 value: "))
+    pm10 = float(input("Enter PM10 value: "))
+    timestamp = input("Enter timestamp (YYYY-MM-DD HH:MM:SS): ")
+
+    # Validation
+    if pm25 <= 0 or pm10 <= 0:
+        print("Error: Values must be greater than 0")
+    else:
+        # Output
+        print("\n--- Pollutant Record ---")
+        print(f"Time      : {timestamp}")
+        print(f"PM2.5     : {pm25} µg/m3")
+        print(f"PM10      : {pm10} µg/m3")
+
+except:
+    print("Invalid input! Please enter numeric values.")
