@@ -1,0 +1,41 @@
+records = []
+
+while True:
+    print("\n1.Add 2.View 3.Save 4.Load 5.Exit")
+    ch = input("Choice: ")
+
+    if ch == "1":
+        try:
+            time = input("Enter time: ")
+            pm25 = float(input("Enter PM2.5: "))
+            pm10 = float(input("Enter PM10: "))
+
+            records.append([time, pm25, pm10])
+            print("Added")
+
+        except:
+            print("Invalid input")
+
+    elif ch == "2":
+        for r in records:
+            print(r)
+
+    elif ch == "3":
+        with open("data.txt", "w") as f:
+            for r in records:
+                f.write(f"{r[0]},{r[1]},{r[2]}\n")
+        print("Saved to file")
+
+    elif ch == "4":
+        records = []
+        try:
+            with open("data.txt", "r") as f:
+                for line in f:
+                    parts = line.strip().split(",")
+                    records.append([parts[0], float(parts[1]), float(parts[2])])
+            print("Loaded from file")
+        except:
+            print("File not found")
+
+    elif ch == "5":
+        break
