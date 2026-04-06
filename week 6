@@ -1,0 +1,25 @@
+class PollutantReading:
+
+    def __init__(self, time, pm25, pm10):
+        self.time = time
+        self.pm25 = pm25
+        self.pm10 = pm10
+
+    def display(self):
+        print("Time:", self.time)
+        print("PM2.5:", self.pm25)
+        print("PM10:", self.pm10)
+
+    def pm25_level(self):
+        if self.pm25 <= 50:
+            return "Good"
+        elif self.pm25 <= 100:
+            return "Moderate"
+        else:
+            return "Poor"
+
+
+# Test
+p = PollutantReading("10:00", 120, 80)
+p.display()
+print("Level:", p.pm25_level())
