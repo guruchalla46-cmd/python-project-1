@@ -1,0 +1,46 @@
+import csv
+import json
+
+# Save to CSV
+def save_to_csv(records, filename="data.csv"):
+    try:
+        with open(filename, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["time", "pm25", "pm10"])
+            for r in records:
+                writer.writerow(r)
+        print("Saved to CSV")
+    except:
+        print("Error saving CSV")
+
+# Load from CSV
+def load_from_csv(filename="data.csv"):
+    records = []
+    try:
+        with open(filename, "r") as f:
+            reader = csv.reader(f)
+            next(reader)  # skip header
+            for row in reader:
+                records.append([row[0], float(row[1]), float(row[2])])
+        print("Loaded from CSV")
+    except:
+        print("Error loading CSV")
+    return records
+
+# Save to JSON
+def save_to_json(records, filename="data.json"):
+    try:
+        with open(filename, "w") as f:
+            json.dump(records, f)
+        print("Saved to JSON")
+    except:
+        print("Error saving JSON")
+
+# Load from JSON
+def load_from_json(filename="data.json"):
+    try:
+        with open(filename, "r") as f:
+            return json.load(f)
+    except:
+        print("Error loading JSON")
+        return []
