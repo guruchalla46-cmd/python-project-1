@@ -1,0 +1,41 @@
+records = []
+
+while True:
+    print("\n1. Add Record  2. View Records  3. Search by Time  4. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        try:
+            time = input("Enter timestamp: ").strip().lower()
+            pm25 = float(input("Enter PM2.5: "))
+            pm10 = float(input("Enter PM10: "))
+
+            if pm25 <= 0 or pm10 <= 0:
+                print("Values must be > 0")
+                continue
+
+            records.append([time, pm25, pm10])
+            print("Record added!")
+
+        except:
+            print("Invalid input!")
+
+    elif choice == "2":
+        print("\nTime\t\tPM2.5\tPM10")
+        for r in records:
+            print(f"{r[0]}\t{r[1]}\t{r[2]}")
+
+    elif choice == "3":
+        search = input("Enter timestamp to search: ").strip().lower()
+        found = False
+
+        for r in records:
+            if r[0] == search:
+                print("Found:", r)
+                found = True
+
+        if not found:
+            print("No record found")
+
+    elif choice == "4":
+        break
